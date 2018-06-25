@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// custom API route
+Route::middleware('auth:api')->get('/user/get', 'UserController@get');
+Route::get('login', ['as' => 'login', 'uses' => 'UserController@get'])->middleware('auth:api');
+
